@@ -1,0 +1,40 @@
+
+#pragma strict
+
+
+using UnityEngine;
+using System.Collections;
+
+public class Shoot_Script : MonoBehaviour {
+
+public GameObject sphere;
+
+
+void Update () {
+
+    for (int touchIndex = 0; touchIndex<Input.touchCount; touchIndex++){
+      Touch currentTouch = Input.touches[touchIndex];
+      if(currentTouch.phase == TouchPhase.Stationary && guiTexture.HitTest(currentTouch.position)){
+
+		sphere.GetComponent<Sphere>().pressiPhoneShootButton = true;
+            
+       }
+		else
+			sphere.GetComponent<Sphere>().pressiPhoneShootButton = false;
+
+
+			
+      if(currentTouch.phase == TouchPhase.Ended && guiTexture.HitTest(currentTouch.position)){
+
+		sphere.GetComponent<Sphere>().pressiPhoneShootButtonEnded = true;
+            
+       }
+		else
+			sphere.GetComponent<Sphere>().pressiPhoneShootButtonEnded = false;
+
+			
+			
+    }
+}
+	
+}

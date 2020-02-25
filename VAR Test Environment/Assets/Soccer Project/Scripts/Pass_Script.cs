@@ -1,0 +1,30 @@
+
+#pragma strict
+
+
+using UnityEngine;
+using System.Collections;
+
+public class Pass_Script : MonoBehaviour {
+
+public GameObject sphere;
+
+
+void Update () {
+
+    for (int touchIndex = 0; touchIndex<Input.touchCount; touchIndex++){
+      Touch currentTouch = Input.touches[touchIndex];
+      if(currentTouch.phase == TouchPhase.Ended && guiTexture.HitTest(currentTouch.position)){
+
+		sphere.GetComponent<Sphere>().pressiPhonePassButton = true;
+            
+       } else {
+		
+		sphere.GetComponent<Sphere>().pressiPhonePassButton = false;
+				
+				
+		}
+    }
+}
+	
+}
