@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: c0a2f670ff70a0440bdd4a5dc8d52872
 ModelImporter:
-  serializedVersion: 19300
+  serializedVersion: 26
   internalIDToNameTable:
   - first:
       43: 4300000
@@ -13,7 +13,7 @@ ModelImporter:
       name: 01 - Default
     second: {fileID: 2100000, guid: 8b24f402588ab4610be7753e25d4dd7f, type: 2}
   materials:
-    materialImportMode: 1
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -102,6 +102,7 @@ ModelImporter:
   - a32b00d999245bd40b411444934e5e03
   - 8411d581524d75049a9380e53631c0d7
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -119,10 +120,8 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 1
   humanoidOversampling: 1
-  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
