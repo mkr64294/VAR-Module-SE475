@@ -39,7 +39,7 @@ public class GoalKeeperJump_Down : MonoBehaviour {
 				if ( tag == "GoalKeeper_Jump_Left" ) {
 				
 					goalKeeper.state = GoalKeeper_Script.GoalKeeper_State.JUMP_LEFT_RASO;
-					goalKeeper.gameObject.animation.Play("portero_despeje_lateral_izquierdo_raso");
+					goalKeeper.gameObject.GetComponent<Animation>().Play("portero_despeje_lateral_izquierdo_raso");
 				
 					
 					Debug.Log("Left");
@@ -48,7 +48,7 @@ public class GoalKeeperJump_Down : MonoBehaviour {
 				if ( tag == "GoalKeeper_Jump_Right" ) {
 	
 					goalKeeper.state = GoalKeeper_Script.GoalKeeper_State.JUMP_RIGHT_RASO;
-					goalKeeper.gameObject.animation.Play("portero_despeje_lateral_derecho_raso");
+					goalKeeper.gameObject.GetComponent<Animation>().Play("portero_despeje_lateral_derecho_raso");
 					
 					Debug.Log("Right");
 	

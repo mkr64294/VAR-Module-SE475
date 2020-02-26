@@ -31,12 +31,12 @@ public class GoalKeeper_Script : MonoBehaviour {
 	
 		initial_Position = transform.position;
 		state = GoalKeeper_State.RESTING;
-		animation["corriendo"].speed = 1.0f;
+		GetComponent<Animation>()["corriendo"].speed = 1.0f;
 		
-		animation["portero_despeje_lateral_derecho_alto"].speed = 1.0f;
-		animation["portero_despeje_lateral_izquierdo_alto"].speed = 1.0f;
-		animation["portero_despeje_lateral_derecho_raso"].speed = 1.0f;
-		animation["portero_despeje_lateral_izquierdo_raso"].speed = 1.0f;
+		GetComponent<Animation>()["portero_despeje_lateral_derecho_alto"].speed = 1.0f;
+		GetComponent<Animation>()["portero_despeje_lateral_izquierdo_alto"].speed = 1.0f;
+		GetComponent<Animation>()["portero_despeje_lateral_derecho_raso"].speed = 1.0f;
+		GetComponent<Animation>()["portero_despeje_lateral_izquierdo_raso"].speed = 1.0f;
 		
 //		capsuleCollider = gameObject.GetComponent<CapsuleCollider>();	
 	}
@@ -52,12 +52,12 @@ public class GoalKeeper_Script : MonoBehaviour {
 				
 				capsuleCollider.direction = 0;
 			
-				if ( animation["portero_despeje_lateral_izquierdo_alto"].normalizedTime < 0.45f  ) {
+				if ( GetComponent<Animation>()["portero_despeje_lateral_izquierdo_alto"].normalizedTime < 0.45f  ) {
 					transform.position -= transform.right * Time.deltaTime * 7.0f;
 				}
 			
 			
-				if ( !animation.IsPlaying("portero_despeje_lateral_izquierdo_alto") ) {
+				if ( !GetComponent<Animation>().IsPlaying("portero_despeje_lateral_izquierdo_alto") ) {
 					state = GoalKeeper_State.STOLE_BALL;		
 					capsuleCollider.direction = 1;
 
@@ -69,10 +69,10 @@ public class GoalKeeper_Script : MonoBehaviour {
 
 				capsuleCollider.direction = 0;
 
-				if ( animation["portero_despeje_lateral_derecho_alto"].normalizedTime < 0.45f  ) {
+				if ( GetComponent<Animation>()["portero_despeje_lateral_derecho_alto"].normalizedTime < 0.45f  ) {
 					transform.position += transform.right * Time.deltaTime * 7.0f;
 				}		
-				if ( !animation.IsPlaying("portero_despeje_lateral_derecho_alto") ) {
+				if ( !GetComponent<Animation>().IsPlaying("portero_despeje_lateral_derecho_alto") ) {
 					state = GoalKeeper_State.STOLE_BALL;		
 					capsuleCollider.direction = 1;
 
@@ -86,12 +86,12 @@ public class GoalKeeper_Script : MonoBehaviour {
 				
 				capsuleCollider.direction = 0;
 			
-				if ( animation["portero_despeje_lateral_izquierdo_raso"].normalizedTime < 0.45f  ) {
+				if ( GetComponent<Animation>()["portero_despeje_lateral_izquierdo_raso"].normalizedTime < 0.45f  ) {
 					transform.position -= transform.right * Time.deltaTime * 4.0f;
 				}
 			
 			
-				if ( !animation.IsPlaying("portero_despeje_lateral_izquierdo_raso") ) {
+				if ( !GetComponent<Animation>().IsPlaying("portero_despeje_lateral_izquierdo_raso") ) {
 					state = GoalKeeper_State.STOLE_BALL;		
 					capsuleCollider.direction = 1;
 
@@ -103,10 +103,10 @@ public class GoalKeeper_Script : MonoBehaviour {
 
 				capsuleCollider.direction = 0;
 
-				if ( animation["portero_despeje_lateral_derecho_raso"].normalizedTime < 0.45f  ) {
+				if ( GetComponent<Animation>()["portero_despeje_lateral_derecho_raso"].normalizedTime < 0.45f  ) {
 					transform.position += transform.right * Time.deltaTime * 4.0f;
 				}		
-				if ( !animation.IsPlaying("portero_despeje_lateral_derecho_raso") ) {
+				if ( !GetComponent<Animation>().IsPlaying("portero_despeje_lateral_derecho_raso") ) {
 					state = GoalKeeper_State.STOLE_BALL;		
 					capsuleCollider.direction = 1;
 
@@ -121,17 +121,17 @@ public class GoalKeeper_Script : MonoBehaviour {
 			
 			case GoalKeeper_State.PASS_HAND:
 		
-				if ( animation["portero_saque_mano_alto"].normalizedTime < 0.65f && sphere.gameObject.GetComponent<Rigidbody>().isKinematic == true ) {
+				if ( GetComponent<Animation>()["portero_saque_mano_alto"].normalizedTime < 0.65f && sphere.gameObject.GetComponent<Rigidbody>().isKinematic == true ) {
 					sphere.gameObject.transform.position = hand_bone.position;
 					sphere.gameObject.transform.rotation = hand_bone.rotation;
 				}
 		
-				if ( animation["portero_saque_mano_alto"].normalizedTime > 0.65f && sphere.gameObject.GetComponent<Rigidbody>().isKinematic == true ) { 
+				if ( GetComponent<Animation>()["portero_saque_mano_alto"].normalizedTime > 0.65f && sphere.gameObject.GetComponent<Rigidbody>().isKinematic == true ) { 
 					sphere.gameObject.GetComponent<Rigidbody>().isKinematic = false;
 					sphere.gameObject.GetComponent<Rigidbody>().AddForce( transform.forward*5000.0f + new Vector3(0.0f, 1300.0f, 0.0f) );
 				}
 		
-				if ( !animation.IsPlaying("portero_saque_mano_alto") || !animation.IsPlaying("portero_saque_mano_alto") ) {
+				if ( !GetComponent<Animation>().IsPlaying("portero_saque_mano_alto") || !GetComponent<Animation>().IsPlaying("portero_saque_mano_alto") ) {
 					state  = GoalKeeper_State.GO_ORIGIN;			
 				}
 			
@@ -141,7 +141,7 @@ public class GoalKeeper_Script : MonoBehaviour {
 			case GoalKeeper_State.UP_WITH_BALL:
 			
 			
-				if ( !animation.IsPlaying("portero_levanta_balon") ) {
+				if ( !GetComponent<Animation>().IsPlaying("portero_levanta_balon") ) {
 				
 					sphere.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 					sphere.gameObject.transform.position = hand_bone.position;
@@ -151,7 +151,7 @@ public class GoalKeeper_Script : MonoBehaviour {
 					
 					if ( timeToSacar < 0.0f ) {
 						timeToSacar = UnityEngine.Random.Range( 2.0f, 5.0f );
-						animation.Play("portero_saque_mano_alto");
+						GetComponent<Animation>().Play("portero_saque_mano_alto");
 						state = GoalKeeper_State.PASS_HAND;
 					}
 				
@@ -181,8 +181,8 @@ public class GoalKeeper_Script : MonoBehaviour {
 				sphere.gameObject.transform.position = hand_bone.position;
 				sphere.gameObject.transform.rotation = hand_bone.rotation;
 				
-				if ( !animation.IsPlaying("portero_parada_frontal_rasa") ) {
-					animation.Play("portero_levanta_balon");
+				if ( !GetComponent<Animation>().IsPlaying("portero_parada_frontal_rasa") ) {
+					GetComponent<Animation>().Play("portero_levanta_balon");
 					state = GoalKeeper_State.UP_WITH_BALL;
 				}
 			
@@ -192,8 +192,8 @@ public class GoalKeeper_Script : MonoBehaviour {
 			case GoalKeeper_State.RESTING:
 			
 				capsuleCollider.direction = 1;
-				if ( !animation.IsPlaying("portero_guardia_reposo") )
-					animation.Play("portero_guardia_reposo");
+				if ( !GetComponent<Animation>().IsPlaying("portero_guardia_reposo") )
+					GetComponent<Animation>().Play("portero_guardia_reposo");
 				
 				transform.LookAt( new Vector3( sphere.gameObject.transform.position.x, transform.position.y , sphere.gameObject.transform.position.z)  );
 			
@@ -207,7 +207,7 @@ public class GoalKeeper_Script : MonoBehaviour {
 			break;
 
 			case GoalKeeper_State.STOLE_BALL:
-				animation.Play("corriendo");
+				GetComponent<Animation>().Play("corriendo");
 
 				Vector3 RelativeWaypointPosition = transform.InverseTransformPoint( sphere.gameObject.transform.position );
 	
@@ -227,7 +227,7 @@ public class GoalKeeper_Script : MonoBehaviour {
 	
 			case GoalKeeper_State.GO_ORIGIN:
 
-				animation.Play("corriendo");
+				GetComponent<Animation>().Play("corriendo");
 				RelativeWaypointPosition = transform.InverseTransformPoint( initial_Position );
 	
 				inputSteer = RelativeWaypointPosition.x / RelativeWaypointPosition.magnitude;
@@ -272,7 +272,7 @@ public class GoalKeeper_Script : MonoBehaviour {
 				
 					sphere.owner = null;
 		
-					animation.Play("portero_parada_frontal_rasa");
+					GetComponent<Animation>().Play("portero_parada_frontal_rasa");
 					state = GoalKeeper_State.GET_BALL_DOWN;
 					
 				}

@@ -71,7 +71,7 @@ private Quaternion initialRotation;
 	
 public float stamina = 64.0f;	
 void  Awake (){
-	animation.Stop();
+	GetComponent<Animation>().Stop();
  	state = Player_State.MOVE_AUTOMATIC; 
 }
 
@@ -91,19 +91,19 @@ void  Start (){
 		initialPosition = new Vector3( transform.position.x, transform.position.y, transform.position.z-initialDisplacement ); 
 
 	// set animations speed to fit perfect movements		
-	animation["retroceder_bucle"].speed = 1.5f;
-	animation["arranque"].speed = 1.0f;
-	animation["arranque_balon"].speed = 1.0f;
-	animation["corriendo"].speed = 1.2f;
-	animation["correr_balon"].speed = 1.0f;
-	animation["pase"].speed = 1.8f;
-	animation["reposo"].speed = 1.0f;
-	animation["cambio_sentido"].speed = 1.3f;
+	GetComponent<Animation>()["retroceder_bucle"].speed = 1.5f;
+	GetComponent<Animation>()["arranque"].speed = 1.0f;
+	GetComponent<Animation>()["arranque_balon"].speed = 1.0f;
+	GetComponent<Animation>()["corriendo"].speed = 1.2f;
+	GetComponent<Animation>()["correr_balon"].speed = 1.0f;
+	GetComponent<Animation>()["pase"].speed = 1.8f;
+	GetComponent<Animation>()["reposo"].speed = 1.0f;
+	GetComponent<Animation>()["cambio_sentido"].speed = 1.3f;
 
-	animation["entrada"].speed = 1.2f;	
+	GetComponent<Animation>()["entrada"].speed = 1.2f;	
 	// para el movimiento de la cabeza de los jugadores
 		
-	animation.Play("reposo");	
+	GetComponent<Animation>().Play("reposo");	
 		
 	initialRotation = transform.rotation * headTransform.rotation;
 	}
@@ -133,24 +133,24 @@ void Case_Controlling() {
 			// if is owner of Ball....
 			if ( sphere.owner == gameObject ) {
 			
-				if ( animation.IsPlaying("reposo") ) {
-					animation.Play("arranque_balon");
+				if ( GetComponent<Animation>().IsPlaying("reposo") ) {
+					GetComponent<Animation>().Play("arranque_balon");
 					speedForAnimation = 1.0f;
 				}
 					
-				if ( animation.IsPlaying("arranque_balon") == false )
-					animation.Play("correr_balon");
+				if ( GetComponent<Animation>().IsPlaying("arranque_balon") == false )
+					GetComponent<Animation>().Play("correr_balon");
 			
 			}
 			else {
 					
-				if ( animation.IsPlaying("reposo") ) {
-					animation.Play("arranque");
+				if ( GetComponent<Animation>().IsPlaying("reposo") ) {
+					GetComponent<Animation>().Play("arranque");
 					speedForAnimation = 1.0f;
 				}
 					
-				if ( animation.IsPlaying("arranque") == false )
-					animation.Play("corriendo");
+				if ( GetComponent<Animation>().IsPlaying("arranque") == false )
+					GetComponent<Animation>().Play("corriendo");
 					
 			}
 				
@@ -166,7 +166,7 @@ void Case_Controlling() {
 			
 			if ( dotp < 0.0f && sphere.owner == gameObject ) {
 		
-				animation.Play("cambio_sentido");
+				GetComponent<Animation>().Play("cambio_sentido");
 				state = Player_State.CHANGE_DIRECTION;
 				transform.forward = -transform.forward;
 				sphere.owner = null;
@@ -177,13 +177,13 @@ void Case_Controlling() {
 				
 		} else {
 	
-			animation.Play("reposo");
+			GetComponent<Animation>().Play("reposo");
 		}
 			
 			
 		// pass
 		if ( sphere.bPassButton && sphere.owner == gameObject ) {
-			animation.Play("pase");
+			GetComponent<Animation>().Play("pase");
 			timeToBeSelectable = 2.0f;
 			state = Player_State.PASSING;
 			sphere.pressiPhonePassButton = false;
@@ -191,7 +191,7 @@ void Case_Controlling() {
 				
 		// shoot
 		if ( sphere.bShootButtonFinished && sphere.owner == gameObject ) {
-			animation.Play("tiro");
+			GetComponent<Animation>().Play("tiro");
 			timeToBeSelectable = 2.0f;
 			state = Player_State.SHOOTING;
 			sphere.pressiPhoneShootButton = false;
@@ -228,7 +228,7 @@ bool NoOneInFront( GameObject[] team_players ) {
 void Case_Oponent_Attack() {
 		
 		actualVelocityPlayer = transform.forward*5.0f*Time.deltaTime;
-		animation.Play("correr_balon");
+		GetComponent<Animation>().Play("correr_balon");
 		Vector3 RelativeWaypointPosition = transform.InverseTransformPoint(goalPosition.position);
 		inputSteer = RelativeWaypointPosition.x / RelativeWaypointPosition.magnitude;
 		transform.Rotate(0, inputSteer*10.0f , 0);
@@ -240,7 +240,7 @@ void Case_Oponent_Attack() {
 		if ( timeToPass < 0.0f && NoOneInFront( oponents ) ) {
 			timeToPass = UnityEngine.Random.Range( 1.0f, 5.0f);	
 			state = Player_State.PASSING;
-			animation.Play("pase");
+			GetComponent<Animation>().Play("pase");
 			timeToBeSelectable = 1.0f;
 			temporallyUnselectable = true;
 		}
@@ -251,7 +251,7 @@ void Case_Oponent_Attack() {
 		if ( distance < 20.0f && relative.z > 0 ) {
 
 			state = Player_State.SHOOTING;
-			animation.Play("tiro");
+			GetComponent<Animation>().Play("tiro");
 			timeToBeSelectable = 1.0f;
 			temporallyUnselectable = true;
 			
@@ -294,10 +294,10 @@ void  Update() {
 			
 		case Player_State.CHANGE_DIRECTION:
 			
-			if ( !animation.IsPlaying("cambio_sentido")) {
+			if ( !GetComponent<Animation>().IsPlaying("cambio_sentido")) {
 				gameObject.GetComponent<CapsuleCollider>().enabled = true;
 				transform.forward = -transform.forward;
-				animation.Play("reposo");
+				GetComponent<Animation>().Play("reposo");
 				state = Player_State.CONTROLLING;
 			}
 			
@@ -321,7 +321,7 @@ void  Update() {
 		case Player_State.PICK_BALL:
 			transform.position += transform.forward * Time.deltaTime * 5.0f;
 						
-			if (animation.IsPlaying("entrada") == false) {
+			if (GetComponent<Animation>().IsPlaying("entrada") == false) {
 				
 				if ( gameObject.tag == "OponentTeam" )
 					state = Player_State.OPONENT_ATTACK;
@@ -335,11 +335,11 @@ void  Update() {
 
 		case Player_State.SHOOTING:
 			
-			if (animation.IsPlaying("tiro") == false)
+			if (GetComponent<Animation>().IsPlaying("tiro") == false)
 				state = Player_State.MOVE_AUTOMATIC;
 
 			
-			if (animation["tiro"].normalizedTime > 0.2f && sphere.owner == this.gameObject) {
+			if (GetComponent<Animation>()["tiro"].normalizedTime > 0.2f && sphere.owner == this.gameObject) {
 				state = Player_State.MOVE_AUTOMATIC;
 				sphere.owner = null;
 				if ( gameObject.tag == "PlayerTeam1" ) {
@@ -357,11 +357,11 @@ void  Update() {
 			
 		case Player_State.PASSING:
 
-			if (animation.IsPlaying("pase") == false)
+			if (GetComponent<Animation>().IsPlaying("pase") == false)
 				state = Player_State.MOVE_AUTOMATIC;
 	
 				
-			if (animation["pase"].normalizedTime > 0.3f && sphere.owner == this.gameObject) {
+			if (GetComponent<Animation>()["pase"].normalizedTime > 0.3f && sphere.owner == this.gameObject) {
 				sphere.owner = null;
 								
 				GameObject bestCandidatePlayer = null;
@@ -415,9 +415,9 @@ void  Update() {
 				
 					sphere.inputPlayer = bestCandidatePlayer;
 					Vector3 directionBall = (bestCandidatePlayer.transform.position - transform.position).normalized;
-					float distanceBall = (bestCandidatePlayer.transform.position - transform.position).magnitude*1.4f;
-					distanceBall = Mathf.Clamp( distanceBall, 15.0f, 40.0f );
-					sphere.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(directionBall.x*distanceBall, distanceBall/5.0f, directionBall.z*distanceBall );
+					float distanceBalll = (bestCandidatePlayer.transform.position - transform.position).magnitude*1.4f;
+					distanceBalll = Mathf.Clamp( distanceBalll, 15.0f, 40.0f );
+					sphere.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(directionBall.x*distanceBalll, distanceBalll/5.0f, directionBall.z*distanceBalll );
 				
 				} else {
 					// if not found a candidate just throw the ball forward....
@@ -431,7 +431,7 @@ void  Update() {
 			break;
  		case Player_State.GO_ORIGIN:
 			
-			animation.Play("corriendo");
+			GetComponent<Animation>().Play("corriendo");
 			// now we just find the relative position of the waypoint from the car transform,
 			// that way we can determine how far to the left and right the waypoint is.
 			Vector3 RelativeWaypointPosition = transform.InverseTransformPoint(new Vector3( 
@@ -483,7 +483,7 @@ void  Update() {
 					inputSteer = 10.0f;
 					
 				transform.Rotate(0, inputSteer*20.0f , 0);
-				animation.Play("corriendo");
+				GetComponent<Animation>().Play("corriendo");
 				float staminaTemp2 = Mathf.Clamp ((stamina/STAMINA_DIVIDER), STAMINA_MIN ,STAMINA_MAX );
 				transform.position += transform.forward*5.5f*Time.deltaTime*staminaTemp2*Speed;
 									
@@ -514,7 +514,7 @@ void  Update() {
 				// if we are too close we go back with special animation
 				} else if ( distanceBall < 2.0f ) {
 					
-					animation.Play("retroceder_bucle");
+					GetComponent<Animation>().Play("retroceder_bucle");
 					state = Player_State.ONE_STEP_BACK;
 					break;
 					
@@ -533,14 +533,14 @@ void  Update() {
 				if ( RelativeWaypointP.magnitude < 1.5f ) {
 										
 					transform.LookAt( new Vector3( sphere.GetComponent<Transform>().position.x, transform.position.y ,sphere.GetComponent<Transform>().position.z)  );
-					animation.Play("reposo");		
+					GetComponent<Animation>().Play("reposo");		
 					timeToRemove = 0.0f;
 					
 				}	else {			
 
 					
 					if ( timeToRemove > 1.0f ) {					
-						animation.Play("corriendo");
+						GetComponent<Animation>().Play("corriendo");
 						staminaTemp = Mathf.Clamp ((stamina/STAMINA_DIVIDER), STAMINA_MIN , STAMINA_MAX );
 						transform.position += transform.forward*5.5f*Time.deltaTime*staminaTemp*Speed;
 					}
@@ -556,7 +556,7 @@ void  Update() {
  		case Player_State.RESTING:
 
 			transform.LookAt( new Vector3( sphere.GetComponent<Transform>().position.x, transform.position.y ,sphere.GetComponent<Transform>().position.z)  );
-			animation.Play("reposo"); 		  
+			GetComponent<Animation>().Play("reposo"); 		  
  		
  		break;
 			
@@ -565,7 +565,7 @@ void  Update() {
 			
 		case Player_State.ONE_STEP_BACK:
 		
-			if (animation.IsPlaying("retroceder_bucle") == false)
+			if (GetComponent<Animation>().IsPlaying("retroceder_bucle") == false)
 				state = Player_State.MOVE_AUTOMATIC;
 
 			transform.position -= transform.forward*Time.deltaTime*4.0f;	
@@ -579,7 +579,7 @@ void  Update() {
 			inputSteer = relPos.x / relPos.magnitude;
 			transform.Rotate(0, inputSteer*20.0f , 0);
 			
-			animation.Play("corriendo");
+			GetComponent<Animation>().Play("corriendo");
 			float staminaTemp3 = Mathf.Clamp ((stamina/STAMINA_DIVIDER), STAMINA_MIN ,STAMINA_MAX );
 			transform.position += transform.forward*4.5f*Time.deltaTime*staminaTemp3*Speed;
 			
@@ -627,7 +627,7 @@ void  Update() {
 					
 						Debug.Log("regate ganado por jugador de POSESION  " + myStrong + " vs " + oponentStrong );
 						
-						this.gameObject.animation.Play("retroceder_bucle");
+						this.gameObject.GetComponent<Animation>().Play("retroceder_bucle");
 						this.gameObject.GetComponent<Player_Script>().state = Player_State.ONE_STEP_BACK;
 						this.gameObject.GetComponent<Player_Script>().timeToBeSelectable = 0.5f;
 						this.gameObject.GetComponent<Player_Script>().temporallyUnselectable = true;
@@ -642,7 +642,7 @@ void  Update() {
 					sphere.owner.GetComponent<Player_Script>().temporallyUnselectable = true;
 					sphere.owner = gameObject;
 					sphere.owner.GetComponent<Player_Script>().state = Player_State.PICK_BALL;
-					sphere.owner.animation.Play("entrada");	
+					sphere.owner.GetComponent<Animation>().Play("entrada");	
 					
 					return;
 				} else {

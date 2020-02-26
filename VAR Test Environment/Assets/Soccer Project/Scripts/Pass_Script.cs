@@ -14,7 +14,7 @@ void Update () {
 
     for (int touchIndex = 0; touchIndex<Input.touchCount; touchIndex++){
       Touch currentTouch = Input.touches[touchIndex];
-      if(currentTouch.phase == TouchPhase.Ended && guiTexture.HitTest(currentTouch.position)){
+      if(currentTouch.phase == TouchPhase.Ended && GetComponent<GUITexture>().HitTest(currentTouch.position)){
 
 		sphere.GetComponent<Sphere>().pressiPhonePassButton = true;
             

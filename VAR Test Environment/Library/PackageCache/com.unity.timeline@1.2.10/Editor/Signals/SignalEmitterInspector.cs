@@ -113,7 +113,7 @@ namespace UnityEditor.Timeline.Signals
             }
         }
 
-        internal override Rect DrawHeaderHelpAndSettingsGUI(Rect r)
+        /*internal override Rect DrawHeaderHelpAndSettingsGUI(Rect r)
         {
             using (new EditorGUI.DisabledScope(!TimelineUtility.IsCurrentSequenceValid() || IsCurrentSequenceReadOnly()))
             {
@@ -121,7 +121,7 @@ namespace UnityEditor.Timeline.Signals
                 const int kTopMargin = 5;
                 return EditorGUIUtility.DrawEditorHeaderItems(new Rect(r.xMax - helpSize.x, r.y + kTopMargin, helpSize.x, helpSize.y), targets);
             }
-        }
+        }*/
 
         IEnumerable<SignalAsset> ISignalAssetProvider.AvailableSignalAssets()
         {

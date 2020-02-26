@@ -35,7 +35,7 @@ public class Goal_Script : MonoBehaviour {
 			sphere.owner = null;
 			
 			goalKeeper.GetComponent<GoalKeeper_Script>().state = GoalKeeper_Script.GoalKeeper_State.SAQUE_PUERTA;
-			goalKeeper.animation.PlayQueued("reposo");
+			goalKeeper.GetComponent<Animation>().PlayQueued("reposo");
 
 		
 			if ( goalKeeper.tag == "GoalKeeper_Oponent" && ingame.state != InGameState_Script.InGameState.GOAL) {
@@ -113,7 +113,7 @@ public class Goal_Script : MonoBehaviour {
 					
 						Vector3 finalLocal = sourceLocal + (dirLocal/(distance+0.1f));
 						arrayVertices[i] = finalLocal; 
-						other.rigidbody.drag = 3.0f;
+						other.GetComponent<Rigidbody>().drag = 3.0f;
 		
 					
 						Debug.DrawLine(/* other.transform.position,*/ red.transform.TransformPoint( finalLocal ) ,red.transform.TransformPoint( finalLocal ) + new Vector3(0,0.1f,0),  color );

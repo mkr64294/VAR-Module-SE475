@@ -187,7 +187,7 @@ namespace UnityEditor.Timeline
             }
         }
 
-        internal override Rect DrawHeaderHelpAndSettingsGUI(Rect r)
+        /*internal override Rect DrawHeaderHelpAndSettingsGUI(Rect r)
         {
             using (new EditorGUI.DisabledScope(IsLocked()))
             {
@@ -196,7 +196,7 @@ namespace UnityEditor.Timeline
                 // Show Editor Header Items.
                 return EditorGUIUtility.DrawEditorHeaderItems(new Rect(r.xMax - helpSize.x, r.y + kTopMargin, helpSize.x, helpSize.y), targets);
             }
-        }
+        }*/
 
         internal override void OnHeaderIconGUI(Rect iconRect)
         {
