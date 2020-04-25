@@ -71,7 +71,6 @@
      <Compile Include="Assets\Soccer Project\Scripts\Player_Script.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\ScriptsWeWrote\MoveBetweenPoints.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\ScriptsWeWrote\Offsides.cs" />
-     <Compile Include="Assets\Soccer Project\Scripts\ScriptsWeWrote\Outline2.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\Shoot_Script.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\Sombra_Script.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\Sphere.cs" />
