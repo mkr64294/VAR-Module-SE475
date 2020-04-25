@@ -12,6 +12,7 @@ public class Offsides : MonoBehaviour
     public GameObject GreenDotBlue;
     public GameObject RedDotRed;
     public GameObject GreenDotRed;
+    public GameObject testDot;
     float BlueMax;
     float BlueMin;
     float RedMax;

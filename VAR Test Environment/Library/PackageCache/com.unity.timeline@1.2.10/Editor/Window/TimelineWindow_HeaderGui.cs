@@ -293,7 +293,7 @@ namespace UnityEditor.Timeline
             EditorGUI.BeginChangeCheck();
 
             var rect = EditorGUILayout.GetControlRect(false, EditorGUI.kSingleLineHeight, EditorStyles.toolbarButton, GUILayout.Width(WindowConstants.refTimeWidth));
-            //state.timeReferenceMode = (TimeReferenceMode)EditorGUI.CycleButton(rect, (int)state.timeReferenceMode, k_TimeReferenceGUIContents, EditorStyles.toolbarButtonRight);
+            // state.timeReferenceMode = (TimeReferenceMode)EditorGUI.CycleButton(rect, (int)state.timeReferenceMode, k_TimeReferenceGUIContents, EditorStyles.toolbarButtonRight);
 
             if (EditorGUI.EndChangeCheck())
                 OnTimeReferenceModeChanged();
