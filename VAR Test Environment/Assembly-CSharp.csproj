@@ -55,13 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\OutlineEffect\Demo\MaterialSwitcher.cs" />
-     <Compile Include="Assets\OutlineEffect\Demo\OutlineAnimation.cs" />
-     <Compile Include="Assets\OutlineEffect\Demo\Rotate.cs" />
-     <Compile Include="Assets\OutlineEffect\Demo\Toggle.cs" />
-     <Compile Include="Assets\OutlineEffect\LinkedSet.cs" />
-     <Compile Include="Assets\OutlineEffect\Outline.cs" />
-     <Compile Include="Assets\OutlineEffect\OutlineEffect.cs" />
+     <Compile Include="Assets\QuickOutline\Scripts\Outline.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\Area_Script.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\Banda_Script.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\Camera_Script.cs" />
@@ -77,6 +71,7 @@
      <Compile Include="Assets\Soccer Project\Scripts\Player_Script.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\ScriptsWeWrote\MoveBetweenPoints.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\ScriptsWeWrote\Offsides.cs" />
+     <Compile Include="Assets\Soccer Project\Scripts\ScriptsWeWrote\Outline2.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\Shoot_Script.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\Sombra_Script.cs" />
      <Compile Include="Assets\Soccer Project\Scripts\Sphere.cs" />
@@ -85,9 +80,9 @@
      <None Include="Assets\Soccer Project\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />
      <None Include="Assets\Soccer Project\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
      <None Include="Assets\Soccer Project\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Transparent Vertex Color.shader" />
-     <None Include="Assets\OutlineEffect\Resources\OutlineShader.shader" />
+     <None Include="Assets\QuickOutline\Resources\Shaders\OutlineFill.shader" />
      <None Include="Assets\Soccer Project\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Detail.shader" />
-     <None Include="Assets\OutlineEffect\Resources\OutlineBufferShader.shader" />
+     <None Include="Assets\QuickOutline\Readme.txt" />
      <None Include="Assets\Soccer Project\Standard Assets\Projectors\Sources\Shaders\Projector Light.shader" />
      <None Include="Assets\Soccer Project\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Reflective.shader" />
      <None Include="Assets\Soccer Project\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Particles Additive Culled.shader" />
@@ -95,6 +90,7 @@
      <None Include="Assets\Soccer Project\Standard Assets (Mobile)\Shaders\Vertex Colored Shaders\Mobile Vertex Colored.shader" />
      <None Include="Assets\Soccer Project\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap Only.shader" />
      <None Include="Assets\Soccer Project\Standard Assets (Mobile)\Shaders\Lightmap Shaders (Legacy)\Mobile Lightmap AlphaTest.shader" />
+     <None Include="Assets\QuickOutline\Resources\Shaders\OutlineMask.shader" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/chrisleach/Documents/SE475/VAR-Module-SE475/VAR Test Environment/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>

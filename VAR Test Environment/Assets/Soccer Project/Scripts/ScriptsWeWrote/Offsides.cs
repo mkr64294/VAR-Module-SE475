@@ -12,13 +12,28 @@ public class Offsides : MonoBehaviour
     public GameObject GreenDotBlue;
     public GameObject RedDotRed;
     public GameObject GreenDotRed;
-    public GameObject testDot;
+    public GameObject MaxBP;
+    public GameObject MinBP;
+    public GameObject MaxRP;
+    public GameObject MinRP;
     float BlueMax;
     float BlueMin;
     float RedMax;
     float RedMin;
     float BlueGK;
     float RedGK;
+    
+//    void OutlineTest() {
+//        // Outline stuff
+//        var outline = BluePlayers[7].AddComponent<Outline>();
+//
+//        outline.OutlineMode = Outline.Mode.OutlineAll;
+//        outline.OutlineColor = Color.red;
+//        outline.OutlineWidth = 5f;
+//        
+//        outline.enable();
+//    }
+
 
     // Update is called once per frame
     void Update()
@@ -36,18 +51,22 @@ public class Offsides : MonoBehaviour
             if (BluePlayers[i].transform.position.z > BlueMax)
             {
                 BlueMax = BluePlayers[i].transform.position.z;
+                MaxBP = BluePlayers[i];
             }
             if (BluePlayers[i].transform.position.z < BlueMin)
             {
                 BlueMin = BluePlayers[i].transform.position.z;
+                MinBP = BluePlayers[i];
             }
             if (RedPlayers[i].transform.position.z > RedMax)
             {
                 RedMax = RedPlayers[i].transform.position.z;
+                MaxRP = RedPlayers[i];
             }
             if (RedPlayers[i].transform.position.z < RedMin)
             {
                 RedMin = RedPlayers[i].transform.position.z;
+                MinRP = RedPlayers[i];
             }
         }
 
@@ -55,8 +74,10 @@ public class Offsides : MonoBehaviour
         //BlueGK = BluePlayerPositions[10];
         //RedGK = RedPlayerPositions[10];
 
+        // Blue player offsides
         if (BlueMax > RedMax && GreenDotBlue.activeSelf == true)
         {
+            
             RedDotBlue.SetActive(true);
             GreenDotBlue.SetActive(false);
         }
