@@ -106,19 +106,9 @@ namespace UnityEditor.Timeline
 
             m_TreeView = new TreeViewController(sequencerWindow, treeviewState);
             m_TreeView.horizontalScrollbarStyle = GUIStyle.none;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            // m_TreeView.scrollViewStyle = GUI.skin.scrollView;
-=======
-            //m_TreeView.scrollViewStyle = GUI.skin.scrollView;
->>>>>>> Stashed changes
-=======
-            //m_TreeView.scrollViewStyle = GUI.skin.scrollView;
->>>>>>> Stashed changes
-=======
-            //m_TreeView.scrollViewStyle = GUI.skin.scrollView;
->>>>>>> Stashed changes
+
+//            m_TreeView.scrollViewStyle = GUI.skin.scrollView;
+
             m_TreeView.keyboardInputCallback = sequencerWindow.TreeViewKeyboardCallback;
 
 
