@@ -88,7 +88,7 @@ namespace UnityEngine.Timeline
             EditorCurveBinding[] result;
             if (!m_ClipCache.TryGetValue(clip, out result))
             {
-                //result = AnimationMode.GetCurveBindings(clip);
+//                result = AnimationMode.GetCurveBindings(clip);
                 UpdateTransformBindings(result);
                 m_ClipCache[clip] = result;
             }

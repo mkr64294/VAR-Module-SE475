@@ -14,8 +14,13 @@ public class BlueOffsides : MonoBehaviour
     void Update()
     {
         setReference(BallReference, ref reference);
-        getOffsidesPlayers(BluePlayers, OffsidesPlayers, reference);
-        checkOffsidesPlayers(OffsidesPlayers, reference);
+        if (reference > 0)
+        {
+            getOffsidesPlayers(BluePlayers, OffsidesPlayers, reference);
+            checkOffsidesPlayers(OffsidesPlayers, reference);
+        }
+        else
+            removeOffsidesPlayers(OffsidesPlayers);
     }
 
     private void setReference(GameObject Ball, ref float referenceToSet)
@@ -52,4 +57,12 @@ public class BlueOffsides : MonoBehaviour
         player.GetComponentInChildren<Outline>().enabled = offsides;
     }
 
+    private void removeOffsidesPlayers(List<GameObject> Offsides)
+    {
+        for (int i = 0; i < OffsidesPlayers.Count; ++i)
+        {
+            EnableDisableOffsides(Offsides[i], false);
+            Offsides.Remove(Offsides[i]);
+        }
+    }
 }

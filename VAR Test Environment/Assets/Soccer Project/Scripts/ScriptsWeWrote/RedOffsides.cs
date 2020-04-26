@@ -6,7 +6,7 @@ public class RedOffsides : MonoBehaviour
 {
     public GameObject[] RedPlayers;
     public GameObject BallReference;
-    public List<GameObject> OffsidesPlayers = new List<GameObject>();
+    private List<GameObject> OffsidesPlayers = new List<GameObject>();
 
     float reference;
 
@@ -14,8 +14,13 @@ public class RedOffsides : MonoBehaviour
     void Update()
     {
         setReference(BallReference, ref reference);
-        getOffsidesPlayers(RedPlayers, OffsidesPlayers, reference);
-        checkOffsidesPlayers(OffsidesPlayers, reference);
+        if (reference < 0)
+        {
+            getOffsidesPlayers(RedPlayers, OffsidesPlayers, reference);
+            checkOffsidesPlayers(OffsidesPlayers, reference);
+        }
+        else
+            removeOffsidesPlayers(OffsidesPlayers);
     }
 
     private void setReference(GameObject Ball, ref float referenceToSet)
@@ -41,7 +46,7 @@ public class RedOffsides : MonoBehaviour
         {
             if (Offsides[i].transform.position.z > reference)
             {
-                EnableDisableOffsides( Offsides[i], false);
+                EnableDisableOffsides(Offsides[i], false);
                 Offsides.Remove(Offsides[i]);
             }
         }
@@ -50,5 +55,14 @@ public class RedOffsides : MonoBehaviour
     private void EnableDisableOffsides(GameObject player, bool offsides)
     {
         player.GetComponentInChildren<Outline>().enabled = offsides;
+    }
+
+    private void removeOffsidesPlayers(List<GameObject> Offsides)
+    {
+        for (int i = 0; i < OffsidesPlayers.Count; ++i)
+        {
+            EnableDisableOffsides(Offsides[i], false);
+            Offsides.Remove(Offsides[i]);
+        }
     }
 }
