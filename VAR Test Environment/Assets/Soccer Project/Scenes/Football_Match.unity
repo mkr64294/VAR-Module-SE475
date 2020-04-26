@@ -266,36 +266,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f99532f1fbce324db2c9ede0608941e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BluePlayers:
-  - {fileID: 1950020327}
-  - {fileID: 2052564953}
-  - {fileID: 657225083}
-  - {fileID: 147484992}
-  - {fileID: 130942912}
-  - {fileID: 1359858576}
-  - {fileID: 1644889305}
-  - {fileID: 909109160}
-  - {fileID: 721038840}
-  - {fileID: 902718073}
-  - {fileID: 442378797}
-  RedPlayers:
-  - {fileID: 213192393}
-  - {fileID: 1385616786}
-  - {fileID: 1474089177}
-  - {fileID: 1119679628}
-  - {fileID: 666046577}
-  - {fileID: 1742117562}
-  - {fileID: 1253871569}
-  - {fileID: 1298004753}
-  - {fileID: 865665192}
-  - {fileID: 66093093}
-  - {fileID: 2107676708}
-  RedDotBlue: {fileID: 1098866355}
-  GreenDotBlue: {fileID: 795314682}
-  RedDotRed: {fileID: 1340992505}
-  GreenDotRed: {fileID: 555837403}
-  OffBlue: []
-  OffRed: []
+  ball: {fileID: 663}
+  BlueGoalKeeper: {fileID: 442378797}
+  RedGoalKeeper: {fileID: 2107676708}
+  BlueOnAttack: {fileID: 0}
+  RedOnAttack: {fileID: 0}
+  SwitchHalves: {fileID: 0}
 --- !u!222 &676
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -323,6 +299,55 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 105}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2016aedd98a548f47821a268125f2da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positions: []
+  player: {fileID: 663}
+  speed: 0
+--- !u!114 &679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b03bc46def05615419b1d766d10386d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Players:
+  - {fileID: 1950020327}
+  - {fileID: 2052564953}
+  - {fileID: 657225083}
+  - {fileID: 147484992}
+  - {fileID: 130942912}
+  - {fileID: 1359858576}
+  - {fileID: 1644889305}
+  - {fileID: 909109160}
+  - {fileID: 721038840}
+  - {fileID: 902718073}
+  - {fileID: 213192393}
+  - {fileID: 1385616786}
+  - {fileID: 1474089177}
+  - {fileID: 1119679628}
+  - {fileID: 666046577}
+  - {fileID: 1742117562}
+  - {fileID: 1253871569}
+  - {fileID: 1298004753}
+  - {fileID: 865665192}
+  - {fileID: 66093093}
+  PlayersOutline: []
 --- !u!114 &681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,7 +659,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 669}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!92 &1401
 Behaviour:
   m_ObjectHideFlags: 0
@@ -1117,7 +1142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: sphere
@@ -1277,7 +1302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: m_RootOrder
-      value: 37
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: sphere
@@ -1654,7 +1679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: sphere
@@ -1741,7 +1766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: m_RootOrder
-      value: 35
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: sphere
@@ -1811,6 +1836,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 688273795}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &442378803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442378797}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b59b83abdb7fd498391bad90c0caff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RedPlayers:
+  - {fileID: 213192393}
+  - {fileID: 1385616786}
+  - {fileID: 1474089177}
+  - {fileID: 1119679628}
+  - {fileID: 666046577}
+  - {fileID: 1742117562}
+  - {fileID: 1253871569}
+  - {fileID: 1298004753}
+  - {fileID: 865665192}
+  - {fileID: 66093093}
+  BallReference: {fileID: 663}
+  OffsidesPlayers: []
 --- !u!1 &443327877
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,7 +2223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: sphere
@@ -2364,7 +2414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: sphere
@@ -2574,7 +2624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: c50cc9d4bd5e9f645bf80c7251eccab4, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: c50cc9d4bd5e9f645bf80c7251eccab4, type: 3}
       propertyPath: centro_campo
@@ -2930,7 +2980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: sphere
@@ -3064,7 +3114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: sphere
@@ -3244,7 +3294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: sphere
@@ -3546,7 +3596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: sphere
@@ -3819,7 +3869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: sphere
@@ -4020,7 +4070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: sphere
@@ -4097,7 +4147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 20a7318a0d6374acaab6ee53016cedcd, type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 20a7318a0d6374acaab6ee53016cedcd, type: 3}
       propertyPath: m_LightmapIndex
@@ -4581,7 +4631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: sphere
@@ -5127,7 +5177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: sphere
@@ -5607,7 +5657,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: sphere
@@ -5904,7 +5954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: sphere
@@ -6036,7 +6086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: c50cc9d4bd5e9f645bf80c7251eccab4, type: 3}
       propertyPath: m_RootOrder
-      value: 36
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: c50cc9d4bd5e9f645bf80c7251eccab4, type: 3}
       propertyPath: m_LocalScale.x
@@ -6234,7 +6284,7 @@ Transform:
   - {fileID: 943826369}
   - {fileID: 2062868247}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1778352689 stripped
 GameObject:
@@ -6842,6 +6892,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1697154017}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2107676714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107676708}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f86ae280e2b0df42bea8bda724df1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BluePlayers:
+  - {fileID: 1950020327}
+  - {fileID: 2052564953}
+  - {fileID: 657225083}
+  - {fileID: 147484992}
+  - {fileID: 130942912}
+  - {fileID: 1359858576}
+  - {fileID: 1644889305}
+  - {fileID: 909109160}
+  - {fileID: 721038840}
+  - {fileID: 902718073}
+  BallReference: {fileID: 663}
+  OffsidesPlayers: []
 --- !u!1 &2131755979
 GameObject:
   m_ObjectHideFlags: 0
@@ -7045,7 +7120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: sphere
@@ -7254,7 +7329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 030933c5f8c151b48855b71abd9b2ddd, type: 3}
       propertyPath: sphere
@@ -7327,7 +7402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 73305e4bc01711e4db2a2f8b126d553d, type: 3}
       propertyPath: sphere
