@@ -118,6 +118,18 @@ namespace UnityEditor.Timeline
             }
         }
 
+        /*internal override Rect DrawHeaderHelpAndSettingsGUI(Rect r)
+        {
+            using (new EditorGUI.DisabledScope(IsTrackLocked()))
+            {
+                var helpSize = EditorStyles.iconButton.CalcSize(EditorGUI.GUIContents.helpIcon);
+                const int kTopMargin = 5;
+
+                // Show Editor Header Items.
+                return EditorGUIUtility.DrawEditorHeaderItems(new Rect(r.xMax - helpSize.x, r.y + kTopMargin, helpSize.x, helpSize.y), targets);
+            }
+        }*/
+
         public virtual void OnEnable()
         {
             m_IsBuiltInType = target != null && target.GetType().Assembly == typeof(TrackAsset).Assembly;
