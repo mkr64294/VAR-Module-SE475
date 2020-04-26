@@ -12,10 +12,8 @@ public class Offsides : MonoBehaviour
     public GameObject GreenDotBlue;
     public GameObject RedDotRed;
     public GameObject GreenDotRed;
-    public GameObject MaxBP;
-    public GameObject MinBP;
-    public GameObject MaxRP;
-    public GameObject MinRP;
+    public List<GameObject> OffBlue;
+    public List<GameObject> OffRed;
     float BlueMax;
     float BlueMin;
     float RedMax;
@@ -51,22 +49,22 @@ public class Offsides : MonoBehaviour
             if (BluePlayers[i].transform.position.z > BlueMax)
             {
                 BlueMax = BluePlayers[i].transform.position.z;
-                MaxBP = BluePlayers[i];
+                OffBlue.Add(BluePlayers[i]);
             }
             if (BluePlayers[i].transform.position.z < BlueMin)
             {
                 BlueMin = BluePlayers[i].transform.position.z;
-                MinBP = BluePlayers[i];
+                OffBlue.Clear();
             }
             if (RedPlayers[i].transform.position.z > RedMax)
             {
                 RedMax = RedPlayers[i].transform.position.z;
-                MaxRP = RedPlayers[i];
+                OffRed.Add(RedPlayers[i]);
             }
             if (RedPlayers[i].transform.position.z < RedMin)
             {
                 RedMin = RedPlayers[i].transform.position.z;
-                MinRP = RedPlayers[i];
+                OffRed.Clear();
             }
         }
 
@@ -77,22 +75,29 @@ public class Offsides : MonoBehaviour
         // Blue player offsides
         if (BlueMax > RedMax && GreenDotBlue.activeSelf == true)
         {
-            
+            foreach (GameObject player in OffBlue)
+                player.GetComponentInChildren<Outline>().enabled = true;
             RedDotBlue.SetActive(true);
             GreenDotBlue.SetActive(false);
         }
         if (BlueMax < RedMax && GreenDotBlue.activeSelf == false)
         {
+            foreach (GameObject player in OffBlue)
+                player.GetComponentInChildren<Outline>().enabled = false;
             RedDotBlue.SetActive(false);
             GreenDotBlue.SetActive(true);
         }
         if (BlueMin > RedMin && GreenDotRed.activeSelf == true)
         {
+            foreach (GameObject player in OffRed)
+                player.GetComponentInChildren<Outline>().enabled = true;
             RedDotRed.SetActive(true);
             GreenDotRed.SetActive(false);
         }
         if (BlueMin < RedMin && GreenDotRed.activeSelf == false)
         {
+            foreach (GameObject player in OffRed)
+                player.GetComponentInChildren<Outline>().enabled = false;
             RedDotRed.SetActive(false);
             GreenDotRed.SetActive(true);
         }
