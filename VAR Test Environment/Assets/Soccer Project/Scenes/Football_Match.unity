@@ -261,7 +261,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 663}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f99532f1fbce324db2c9ede0608941e, type: 3}
   m_Name: 
@@ -321,6 +321,45 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 105}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b729a160fe02f4b88f2e5a5b63a815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redPlayers:
+  - {fileID: 213192393}
+  - {fileID: 1385616786}
+  - {fileID: 1474089177}
+  - {fileID: 1119679628}
+  - {fileID: 666046577}
+  - {fileID: 1742117562}
+  - {fileID: 1253871569}
+  - {fileID: 1298004753}
+  - {fileID: 865665192}
+  - {fileID: 66093093}
+  - {fileID: 2107676708}
+  bluePlayers:
+  - {fileID: 1950020327}
+  - {fileID: 2052564953}
+  - {fileID: 657225083}
+  - {fileID: 147484992}
+  - {fileID: 130942912}
+  - {fileID: 1359858576}
+  - {fileID: 1644889305}
+  - {fileID: 909109160}
+  - {fileID: 721038840}
+  - {fileID: 902718073}
+  - {fileID: 442378797}
+  ballPosition: {fileID: 663}
+  bias: 65
+  speed: 20
 --- !u!114 &681
 MonoBehaviour:
   m_ObjectHideFlags: 0
