@@ -5,19 +5,22 @@ using UnityEngine;
 public class RedOffsides : MonoBehaviour
 {
     public GameObject[] RedPlayers;
+    public GameObject[] BluePlayers;
     public GameObject BallReference;
     private List<GameObject> OffsidesPlayers = new List<GameObject>();
 
-    float reference;
+    float ballReference;
+    float lastDef;
 
     // Update is called once per frame
     void Update()
     {
-        setReference(BallReference, ref reference);
-        if (reference < 0)
+        setReference(BallReference, ref ballReference);
+        if (ballReference < 0)
         {
-            getOffsidesPlayers(RedPlayers, OffsidesPlayers, reference);
-            checkOffsidesPlayers(OffsidesPlayers, reference);
+            setLastDef(BluePlayers, ref lastDef);
+            getOffsidesPlayers(RedPlayers, OffsidesPlayers, ballReference, lastDef);
+            checkOffsidesPlayers(OffsidesPlayers, ballReference, lastDef);
         }
         else
             removeOffsidesPlayers(OffsidesPlayers);
@@ -28,11 +31,21 @@ public class RedOffsides : MonoBehaviour
         referenceToSet = Ball.transform.position.z;
     }
 
-    private void getOffsidesPlayers(GameObject[] Players, List<GameObject> Offsides, float referenceMeasure)
+    private void setLastDef(GameObject[] Defenders, ref float lastDefender)
+    {
+        lastDefender = 0;
+        for (int i = 0; i < Defenders.Length; i++)
+        {
+            if (Defenders[i].transform.position.z < lastDefender)
+                lastDefender = Defenders[i].transform.position.z;
+        }
+    }
+
+    private void getOffsidesPlayers(GameObject[] Players, List<GameObject> Offsides, float referenceMeasure, float defRef)
     {
         for (int i = 0; i < Players.Length; ++i)
         {
-            if (Players[i].transform.position.z < referenceMeasure && !Offsides.Contains(Players[i]))
+            if (Players[i].transform.position.z < defRef && Players[i].transform.position.z < referenceMeasure && !Offsides.Contains(Players[i]))
             {
                 EnableDisableOffsides(Players[i], true);
                 Offsides.Add(Players[i]);
@@ -40,11 +53,11 @@ public class RedOffsides : MonoBehaviour
         }
     }
 
-    private void checkOffsidesPlayers(List<GameObject> Offsides, float reference)
+    private void checkOffsidesPlayers(List<GameObject> Offsides, float reference, float defRef)
     {
         for (int i = 0; i < Offsides.Count; ++i)
         {
-            if (Offsides[i].transform.position.z > reference)
+            if (Offsides[i].transform.position.z > defRef || Offsides[i].transform.position.z > reference)
             {
                 EnableDisableOffsides(Offsides[i], false);
                 Offsides.Remove(Offsides[i]);
